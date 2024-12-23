@@ -24,7 +24,12 @@ public class User implements Serializable {
 	private String email;
 	private String phone;
 	private String password;
-
+	
+	// É obrigatório no spring usar o default construct, senão ele não vai dar conta de instanciar meus objetos.
+	public User() {}
+	
+	// Eu posso até remover o personalizado, pois basicamente ele é usado para EU PRÓPRIO, em hardcode, fazer testes.
+	// Ver a classe TestConfig!
 	public User(Long id, String name, String email, String phone, String password) {
 		this.id = id;
 		this.name = name;
