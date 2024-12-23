@@ -3,10 +3,22 @@ package com.caiomiranda.webservice.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-// Serializable tem métodos default que convertem User em cadeias de bytes.
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	// Marca o atributo ID como Primary Key da tabela.
+	@Id
+	// Define que o valor dessa PK será gerado automaticamente pelo DB usando a
+	// estratégia IDENTITY.
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
