@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +33,7 @@ public class User implements Serializable {
 	// Ou seja, no modelo relacional de BD, um user pode ter vários orders.
 	// O mappedBy identifica o nome do atributo na classe Order que representa a FK.
 	@OneToMany(mappedBy = "client")
+	@JsonIgnore
 	private List<Order> orders = new ArrayList<>();
 	
 	// É obrigatório no spring usar o default construct, senão ele não vai dar conta de instanciar meus objetos.
