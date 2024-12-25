@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.caiomiranda.webservice.entities.Category;
 import com.caiomiranda.webservice.entities.Order;
+import com.caiomiranda.webservice.entities.Product;
 import com.caiomiranda.webservice.entities.User;
 import com.caiomiranda.webservice.entities.enums.OrderStatus;
 import com.caiomiranda.webservice.repositories.CategoryRepository;
 import com.caiomiranda.webservice.repositories.OrderRepository;
+import com.caiomiranda.webservice.repositories.ProductRepository;
 import com.caiomiranda.webservice.repositories.UserRepository;
 
 // Eu informo que essa classe é do tipo Configuration.
@@ -37,6 +39,9 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
+	@Autowired
+	private ProductRepository productRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 		User user1 = new User(null, "Larissa", "larissa@gmail.com", "99999", "123");
@@ -54,6 +59,14 @@ public class TestConfig implements CommandLineRunner {
 		Category cat3 = new Category(null, "Computers");
 
 		categoryRepository.saveAll(List.of(cat1, cat2, cat3));
+
+		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+
+		productRepository.saveAll(List.of(p1, p2, p3, p4, p5));
 	}
 
 }
